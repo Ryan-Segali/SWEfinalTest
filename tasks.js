@@ -2,9 +2,13 @@
 
 const moment = require('moment');
 
-const isTaskOverdue = (taskDueDate) => {
-  const currentDate = moment().format('YYYY-MM-DD');
-  return moment(taskDueDate).isBefore(currentDate);
+// previous version of isTaskOverdue for testing
+const IsTaskOverdue = (taskDueDate) => {
+    const currentDateFormatted = moment().format('MM-DD-YYYY');
+    const currentDateParsed = moment(currentDateFormatted, 'MM-DD-YYYY').format('MM-DD-YYYY');
+    
+    // Check if the task is overdue
+    return moment(taskDueDate, 'MM-DD-YYYY').isBefore(currentDateParsed);
 };
 
 module.exports = {
